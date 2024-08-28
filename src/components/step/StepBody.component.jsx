@@ -12,7 +12,7 @@ const StepBody = ({ activeStep, setUserDetails, userDetails }) => {
   // };
 
   useEffect(() => {
-    axios.get('http://localhost:3000/pages').then((response) => {
+    axios.get('https://zealthy-backend.vercel.app/pages').then((response) => {
       const config = {};
       response.data.forEach(page => {
         config[`page${page.pageNo}`] = page.componentList;

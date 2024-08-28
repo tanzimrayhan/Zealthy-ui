@@ -5,7 +5,7 @@ const DataTable = () => {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/users')
+        fetch('https://zealthy-backend.vercel.app/users')
             .then(response => response.json())
             .then(data => setUsers(data));
     }, []);

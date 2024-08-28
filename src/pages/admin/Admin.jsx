@@ -54,7 +54,7 @@ function Admin() {
             return;
         }
 
-        axios.post('http://localhost:3000/pages', { pageNo: 2, componentList: page2Layout }).then(response => {
+        axios.post('https://zealthy-backend.vercel.app/pages', { pageNo: 2, componentList: page2Layout }).then(response => {
             console.log(response);
             if (response.status === 201) {
                 setSuccess(response.data?.message);
@@ -65,7 +65,7 @@ function Admin() {
             setError(error.message);
         }) ;
 
-        axios.post('http://localhost:3000/pages', { pageNo: 3, componentList: page3Layout }).then(response => {
+        axios.post('https://zealthy-backend.vercel.app/pages', { pageNo: 3, componentList: page3Layout }).then(response => {
             console.log(response);
             if (response.status === 201) {
                 setSuccess(response.data?.message);

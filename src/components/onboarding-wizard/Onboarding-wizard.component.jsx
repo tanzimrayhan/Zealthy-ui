@@ -52,7 +52,7 @@ const OnboardingWizard = () => {
     };
 
     const handleFinish = () => {
-        axios.post('http://localhost:3000/user', userDetails)
+        axios.post('https://zealthy-backend.vercel.app/user', userDetails)
             .then(response => {
                 if (response.status === 201) {
                     setSuccess(response.data?.message);
