@@ -3,24 +3,13 @@ import Step1 from './Step1.component'
 import DynamicSteps from './DynamicSteps';
 import axios from 'axios';
 
-const StepBody = ({ activeStep, setUserDetails, userDetails }) => {
+const StepBody = ({ activeStep, setUserDetails, userDetails, adminConfig }) => {
 
-  const [adminConfig, setAdminConfig] = useState({});
+  // const [adminConfig, setAdminConfig] = useState({});
   // const adminConfig = {
   //   page2: ['aboutMe', 'birthday'],
   //   page3: ['street', 'city', 'state', 'zip'],
   // };
-
-  useEffect(() => {
-    axios.get('https://zealthy-backend.vercel.app/pages').then((response) => {
-      const config = {};
-      response.data.forEach(page => {
-        config[`page${page.pageNo}`] = page.componentList;
-      });
-      setAdminConfig(config);
-    });
-  },[]);
-
   
   const renderBody = (step) => {
     switch (step) {
@@ -34,7 +23,7 @@ const StepBody = ({ activeStep, setUserDetails, userDetails }) => {
   }
 
   return (
-    <div>{renderBody(activeStep)}</div>
+    <>{renderBody(activeStep)}</>
   )
 }
 
