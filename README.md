@@ -40,3 +40,12 @@ yarn dev
 ```
 
 This will start the app in development mode, and you can access it at http://localhost:5173.
+
+
+## Available Scripts
+In the project directory, you can run:
+
+- npm run dev: Runs the app in development mode.
+- npm run build: Builds the app for production.
+- npm run preview: Previews the production build.
+- npm run lint: Lints the codebase for any issues.
