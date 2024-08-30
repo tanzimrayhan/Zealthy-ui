@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Stepper, Step, StepLabel, Button, Typography, Box, Alert } from '@mui/material';
-import StepBody from '../step/StepBody.component';
+import StepBody from '../../components/step/StepBody.component';
 import axios from 'axios';
 
 const OnboardingWizard = () => {
@@ -21,6 +21,14 @@ const OnboardingWizard = () => {
 
     const steps = ['Basic Information', 'User Details', 'Others'];
     const isEmailAndPasswordSet = userDetails.email !== '' && userDetails.password !== '';
+    const validateEmail = (email) => {
+        return String(email)
+            .toLowerCase()
+            .match(
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            );
+    };
+
 
     useEffect(() => {
         axios.get('https://zealthy-backend.vercel.app/pages').then((response) => {
@@ -35,6 +43,12 @@ const OnboardingWizard = () => {
     const handleNext = () => {
         if (activeStep === 0 && !isEmailAndPasswordSet) {
             setError('Email and Password are required');
+            return;
+        } else if (activeStep === 0 && !validateEmail(userDetails.email)) {
+            setError('Please enter a valid email');
+            return;
+        } else if (activeStep === 0 && userDetails.password.length < 8) {
+            setError('Password should be atleast 8 characters long');
             return;
         }
         if (activeStep === 1) {

@@ -12,15 +12,18 @@ const DataTable = () => {
 
     return (
         <Box
+            
             sx={{
                 display: 'flex',
                 flexDirection: 'column',
                 p: 5,
                 m: 1,
                 borderRadius: 5,
-                width: '70%',
+                width: '100%',
                 border: '1px solid #bdbdbd',
-                backgroundColor: '#fff'
+                backgroundColor: '#fff',
+                overflowX: 'auto',
+                overflow:'-moz-scrollbars-horizontal',
             }}
         >
             <table style={{ borderCollapse: 'collapse' }}>

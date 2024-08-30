@@ -30,7 +30,7 @@ const Step1 = ({userDetails, setUserDetails}) => {
                     label="Password"
                     value={userDetails.password}
                     variant="outlined"
-                    type="password"
+                    type="password"                    
                     onChange={(e) => setUserDetails({ ...userDetails, password: e.target.value })}
                 />
             </Box >
