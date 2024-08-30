@@ -1,15 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Step1 from './Step1.component'
 import DynamicSteps from './DynamicSteps';
-import axios from 'axios';
+import { Box, CircularProgress } from '@mui/material';
 
-const StepBody = ({ activeStep, setUserDetails, userDetails, adminConfig }) => {
-
-  // const [adminConfig, setAdminConfig] = useState({});
-  // const adminConfig = {
-  //   page2: ['aboutMe', 'birthday'],
-  //   page3: ['street', 'city', 'state', 'zip'],
-  // };
+const StepBody = ({loading, activeStep, setUserDetails, userDetails, adminConfig }) => {
   
   const renderBody = (step) => {
     switch (step) {
@@ -18,7 +12,10 @@ const StepBody = ({ activeStep, setUserDetails, userDetails, adminConfig }) => {
          <Step1 setUserDetails={setUserDetails} userDetails={userDetails} />
         )
       default:
-        return <DynamicSteps step={step} adminConfig={adminConfig} setUserDetails={setUserDetails} userDetails={userDetails}/>
+        return (
+        loading ? <Box display={'flex'} padding={3}><CircularProgress /></Box> :
+        <DynamicSteps step={step} adminConfig={adminConfig} setUserDetails={setUserDetails} userDetails={userDetails}/>
+        )
     }
   }
 

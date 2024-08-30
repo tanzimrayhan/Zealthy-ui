@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Stepper, Step, StepLabel, Button, Typography, Box, Alert } from '@mui/material';
 import StepBody from '../../components/step/StepBody.component';
 import axios from 'axios';
@@ -18,7 +18,7 @@ const OnboardingWizard = () => {
         birthday: '',
     });
     const [adminConfig, setAdminConfig] = React.useState({});
-
+    const [loading, setLoading] = useState(false);
     const steps = ['Basic Information', 'User Details', 'Others'];
     const isEmailAndPasswordSet = userDetails.email !== '' && userDetails.password !== '';
     const validateEmail = (email) => {
@@ -103,15 +103,21 @@ const OnboardingWizard = () => {
                 return;
             }
         }
+        setLoading(true);
         axios.post('https://zealthy-backend.vercel.app/user', userDetails)
             .then(response => {
                 if (response.status === 201) {
+                    setError('');
+                    setLoading(false);
                     setSuccess(response.data?.message);
+                    set
                 } else {
                     setError(response.data?.message);
+                    setLoading(false);
                 }
             })
             .catch(error => {
+                setLoading(false);
                 setError(error.response.data.message);
             });
     }
@@ -158,7 +164,8 @@ const OnboardingWizard = () => {
             ) : (
                 <React.Fragment>
                     {/* <Typography sx={{ mt: 2, mb: 1, color:'black' }}>Step {activeStep + 1}</Typography> */}
-                    {!success && <StepBody activeStep={activeStep + 1} adminConfig={adminConfig} setUserDetails={setUserDetails} userDetails={userDetails} />}
+                   
+                    {!success && <StepBody loading={loading} activeStep={activeStep + 1} adminConfig={adminConfig} setUserDetails={setUserDetails} userDetails={userDetails} />}
                     <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                         {!success && <Button
                             color="inherit"
