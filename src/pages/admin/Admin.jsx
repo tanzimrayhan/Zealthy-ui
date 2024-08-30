@@ -8,6 +8,19 @@ function Admin() {
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
 
+    const handleResetPages = () => {
+        axios.get('https://zealthy-backend.vercel.app/resetPages').then(response => {
+            console.log(response);
+            if (response.status === 200) {
+                setSuccess(response.data?.message);
+            } else {
+                setError(response.data?.message);
+            }
+        }).catch(error => {
+            setError(error.message);
+        });
+    }
+
     const handleChange = (event) => {
         const { name, value } = event.target;
         if (value === 'Page2') {
@@ -63,7 +76,7 @@ function Admin() {
             }
         }).catch(error => {
             setError(error.message);
-        }) ;
+        });
 
         axios.post('https://zealthy-backend.vercel.app/pages', { pageNo: 3, componentList: page3Layout }).then(response => {
             console.log(response);
@@ -74,7 +87,7 @@ function Admin() {
             }
         }).catch(error => {
             setError(error.message);
-        }) ;
+        });
     }
 
 
@@ -145,7 +158,10 @@ function Admin() {
                     </Select>
                 </FormControl>
             </Box>
-            <Box display={'flex'} justifyContent={'center'} padding={2}>
+            <Box display={'flex'} justifyContent={'space-between'} paddingY={2}>
+                <Button onClick={handleResetPages} variant='outlined'>
+                    Load Default
+                </Button>
                 <Button onClick={handleSaveLayout} variant='contained'>
                     Save Layout
                 </Button>
