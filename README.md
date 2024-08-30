@@ -1,8 +1,39 @@
-# React + Vite
+# React + Vite App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a React application bootstrapped with Vite. It provides a fast development experience with modern features and optimizations.
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Getting Started](#getting-started)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Available Scripts](#available-scripts)
+
+
+## Getting Started
+
+To get started with this project, clone the repository and install the dependencies.
+
+```bash
+git clone https://github.com/tanzimrayhan/Zealthy-ui.git
+cd Zealthy-ui
+
+
+## Installation 
+Install the dependencies using npm or yarn:
+
+```bash
+npm install
+# or
+yarn install
+
+
+## Usage
+To run the development server, use:
+
+```bash
+npm run dev
+# or
+yarn dev
+
+This will start the app in development mode, and you can access it at http://localhost:5173.
