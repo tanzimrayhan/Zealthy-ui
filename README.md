@@ -17,6 +17,7 @@ To get started with this project, clone the repository and install the dependenc
 ```bash
 git clone https://github.com/tanzimrayhan/Zealthy-ui.git
 cd Zealthy-ui
+```
 
 
 ## Installation 
@@ -26,6 +27,7 @@ Install the dependencies using npm or yarn:
 npm install
 # or
 yarn install
+```
 
 
 ## Usage
@@ -35,5 +37,6 @@ To run the development server, use:
 npm run dev
 # or
 yarn dev
+```
 
 This will start the app in development mode, and you can access it at http://localhost:5173.
