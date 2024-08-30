@@ -12,7 +12,7 @@ function Admin() {
         axios.get('https://zealthy-backend.vercel.app/resetPages').then(response => {
             console.log(response);
             if (response.status === 200) {
-                setSuccess(response.data?.message);
+                setSuccess(response.data?.message+". Please visit the onboarding wizard to see the changes");
             } else {
                 setError(response.data?.message);
             }
